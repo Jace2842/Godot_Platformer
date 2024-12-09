@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://5nfvevxd0d86"]
+
+[ext_resource type="Script" path="res://moneda.gd" id="1_g6d2l"]
+[ext_resource type="ArrayMesh" uid="uid://bdh6wvj63vmxk" path="res://resources/euro_new.res" id="2_tu735"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kbb56"]
+radius = 0.340806
+height = 0.794994
+
+[node name="moneda" type="Area3D"]
+script = ExtResource("1_g6d2l")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.25, 0, -1.09278e-08, -1.09278e-08, 4.77671e-16, -0.25, 0, 0.25, 4.77671e-16, 0, 0.3, 0)
+mesh = ExtResource("2_tu735")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0.3, 0)
+shape = SubResource("CapsuleShape3D_kbb56")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
